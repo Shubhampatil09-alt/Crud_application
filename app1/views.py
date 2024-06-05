@@ -24,7 +24,7 @@ def server_list(request):
             multiprocessing.freeze_support()
             pool = multiprocessing.Pool(processes=1)
             values  = pool.map(ping_server, values)  
-            print("---",values)
+            print("---------",values)
             server_status = [{'server_name': value, 'server_status': ping_server(value)} for value in values]
 
         return render(request, 'server_list.html', {'server_status': server_status})
